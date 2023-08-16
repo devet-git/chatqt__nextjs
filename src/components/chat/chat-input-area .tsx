@@ -25,18 +25,28 @@ export default function ChatInputArea({ onSend }: Props) {
       }
     }
   };
+  /**
+   * Replace whitespace and new line in user's message. Update state
+   * @date 8/17/2023 - 10:46:42 AM
+   *
+   * @param {React.SyntheticEvent<HTMLDivElement>} e
+   */
   const handleInputMessage = (e: React.SyntheticEvent<HTMLDivElement>) => {
-    const mess = e.currentTarget.innerText.trim(); //.replace(/\n/g, '');
+    const mess = e.currentTarget.innerText.trim();
     setMessage(mess);
   };
+
+  /**
+   * handle props onsend to return message when reuse this component. Clear content
+   * @date 8/17/2023 - 10:47:49 AM
+   */
   const handleOnSend = () => {
     onSend && onSend(message);
     clearMessageBox();
-    // socket.emit('new mess', sendMessageRef.current?.value);
   };
   return (
     <div className="toolbar flex items-center gap-2 bg-blue-100 px-3 py-2 ">
-      <div className="py-2 px-3 border border-white focus-within:border-blue-500 w-full overflow-y-auto pr-2 bg-white rounded-xl">
+      <div className="py-2 px-3 border border-white focus-within:border-blue-400 w-full overflow-y-auto pr-2 bg-white rounded-xl">
         <div
           ref={messageBoxRef}
           className=" max-h-[150px] overflow-y-auto outline-none bg-white"

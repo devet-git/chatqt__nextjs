@@ -1,9 +1,9 @@
 import classNames from '@/utils/classNames';
 
 type Props = {
-  sender?: true;
+  sender?: boolean;
   showAvatar?: true;
-  text: string;
+  text: string | undefined;
 };
 export default function Message({ sender, text, showAvatar }: Props) {
   const Avatar = () => (
@@ -24,8 +24,8 @@ export default function Message({ sender, text, showAvatar }: Props) {
       {!sender && <Avatar />}
       <div
         className={classNames(
-          sender && 'bg-green-100',
-          'w-fit bg-white px-2 py-1 rounded-lg'
+          sender ? 'bg-blue-500 text-white' : 'bg-white',
+          'w-fit px-3 py-1.5 rounded-xl'
         )}
       >
         {text}

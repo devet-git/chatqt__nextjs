@@ -5,9 +5,6 @@ import { Inter } from 'next/font/google';
 import { io, Socket } from 'socket.io-client';
 
 export const socket: Socket = io('http://localhost:8080');
-socket.on('connect', () =>
-  console.log(`Connecting to server with id: ${socket.id}`)
-);
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-white`}>
-        <ReduxProvider>{children}</ReduxProvider>
-      </body>
-    </html>
+    <ReduxProvider>
+      <html lang="en">
+        <body className={`${inter.className} bg-white`}>{children}</body>
+      </html>
+    </ReduxProvider>
   );
 }

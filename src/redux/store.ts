@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import currentChatReducer from './features/currentChatSlice';
+import conversationReducer from './features/conversationSlice';
 import userReducer from './features/userSlice';
 
 export const store = configureStore({
-  reducer: { currentChatReducer, userReducer },
+  reducer: { conversationReducer, userReducer },
   devTools: process.env.NODE_ENV !== 'production',
 });
 

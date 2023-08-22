@@ -1,16 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {} as IUser;
+const initialState: IUser = {
+  id: '',
+  email: '',
+  refreshToken: '',
+  role: 'USER',
+  status: 'UNVERIFIED',
+};
 export const userSlice = createSlice({
   name: 'userSlice',
   initialState,
   reducers: {
     setCurrentUser: (state: IUser, action: PayloadAction<IUser>) => {
-      state = { ...action.payload };
+      return { ...state, ...action.payload };
     },
-    clearUser: (state: IUser) => {
-      state = {} as IUser;
-    },
+    clearUser: () => initialState,
   },
 });
 export const { setCurrentUser, clearUser } = userSlice.actions;

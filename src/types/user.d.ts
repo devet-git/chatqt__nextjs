@@ -1,7 +1,9 @@
 interface IUser {
-  id: string | number;
-  name: string;
-  username: string;
-  email?: string;
+  id: string;
+  name?: string;
+  email: string;
   avatar?: string;
+  role: 'USER' | 'ADMIN';
+  refreshToken: string;
+  status: 'UNVERIFIED' | 'ACTIVE' | 'DELETED';
 }
